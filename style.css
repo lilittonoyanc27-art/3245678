@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+:root {
+  --font-display: 'Fraunces', 'Noto Sans Armenian', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans Armenian', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f7efe2;
+  color: #1c1917;
+  line-height: 1.75;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Interactive Spanish click-to-translate element */
+.es-click {
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 160ms cubic-bezier(0.16, 1, 0.3, 1), color 160ms ease;
+}
+
+.es-click-inline {
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #b45309;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+  border-radius: 4px;
+  padding: 2px 3px;
+  transition: background-color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.es-click-inline:hover,
+.es-click-inline:focus-visible {
+  background-color: #f3e2cc;
+  text-decoration-color: #9a3412;
+  outline: none;
+}
+
+.es-block {
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: 0 -12px;
+  border-radius: 10px;
+  transition: background-color 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.es-block:hover {
+  background-color: #f5e8d6;
+}
+
+.es-block.is-open {
+  background-color: #efdcc4;
+}
+
+.es-block:focus-visible,
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 2.5px solid #9a3412;
+  outline-offset: 2px;
+}
+
+.es-hint-mark {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: #9a3412;
+  opacity: 0.8;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.es-block:hover .es-hint-mark,
+.es-block.is-open .es-hint-mark {
+  opacity: 1;
+}
+
+/* Armenian translation reveal panel */
+.hy-reveal {
+  display: none;
+  margin-top: 10px;
+  padding: 12px 16px;
+  background-color: #fffdf9;
+  border: 1.5px solid #d4a373;
+  border-radius: 10px;
+  color: #292524;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  animation: fadeSlide 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hy-reveal.is-visible,
+body.show-all-hy .hy-reveal {
+  display: block;
+}
+
+.hy-inline-reveal {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 14px;
+  background-color: #fbf5ec;
+  border: 1px solid #d4a373;
+  border-radius: 8px;
+  color: #292524;
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.hy-inline-reveal.is-visible,
+body.show-all-hy .hy-inline-reveal {
+  display: block;
+}
+
+/* Underlined exam expressions inside stories */
+.exam-underline {
+  text-decoration: underline;
+  text-decoration-color: #9a3412;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 5px;
+  background-color: #f3d7b6;
+  color: #431407;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Highlighted word for grammar analysis */
+.grammar-highlight {
+  font-weight: 700;
+  color: #7c2d12;
+  text-decoration: underline;
+  text-decoration-color: #9a3412;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 4px;
+  background-color: #f3d7b6;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* Answer reveal block */
+.answer-panel {
+  display: none;
+  margin-top: 14px;
+  padding: 16px 20px;
+  background-color: #ecfdf5;
+  border: 1.5px solid #34d399;
+  border-radius: 10px;
+  color: #064e3b;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  animation: fadeSlide 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.answer-panel.is-visible {
+  display: block;
+}
+
+/* Option buttons for interactive quizzes */
+.quiz-opt {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1.5px solid #c2783e;
+  border-radius: 10px;
+  background-color: #fffdf9;
+  color: #431407;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.quiz-opt:hover {
+  border-color: #9a3412;
+  background-color: #f5e1c8;
+  color: #7c2d12;
+}
+
+.quiz-opt.is-correct {
+  border-color: #059669;
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 700;
+}
+
+.quiz-opt.is-wrong {
+  border-color: #dc2626;
+  background-color: #fee2e2;
+  color: #991b1b;
+  font-weight: 700;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  padding: 12px 20px;
+  background-color: #7c2d12;
+  color: #fff7ed;
+  border: 1px solid #c2410c;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hy-reveal,
+  .answer-panel,
+  .toast {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Warm muted scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #f3e6d3;
+}
+::-webkit-scrollbar-thumb {
+  background: #b45309;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9a3412;
+}
